@@ -1,336 +1,656 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KKU Campus Guide - แนะนำสถานที่ท่องเที่ยวมหาวิทยาลัยขอนแก่น</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KKU Campus Guide – Modern Edition</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #A73B24;
+            --secondary: #E8967D;
+            --dark: #2C1810;
+            --light: #FFF8F5;
+            --accent: #F4C430;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Prompt', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
         }
 
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: sticky;
+        /* Navbar */
+        .navbar {
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            background: rgba(167, 59, 36, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        header h1 {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #A73B24 0%, #E8967D 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
             text-align: center;
-            color: #667eea;
-            font-size: 2.5rem;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .logo-wrapper {
+            margin-bottom: 2rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        #logoCanvas {
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: slideInDown 1s ease;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .student-badge {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease 0.6s backwards;
+        }
+
+        .student-badge strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Places Section */
+        .places-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .places-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .place-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(167, 59, 36, 0.1);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 3px solid transparent;
+        }
+
+        .place-item:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 0 20px 60px rgba(167, 59, 36, 0.25);
+            border-color: var(--secondary);
+        }
+
+        .place-header {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--primary);
+        }
+
+        .place-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .place-item:hover .place-header img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .place-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .place-body {
+            padding: 2rem;
+        }
+
+        .place-body h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .place-body p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: linear-gradient(135deg, #2C1810 0%, #A73B24 100%);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3.5rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            font-size: 3rem;
+            color: var(--primary);
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
-        header p {
-            text-align: center;
+        .form-header p {
             color: #666;
             font-size: 1.1rem;
         }
 
-        .student-info {
-            text-align: center;
-            margin-top: 1rem;
-            padding: 0.5rem;
-            background: #f0f0f0;
-            border-radius: 8px;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .student-info p {
-            color: #333;
-            font-size: 0.95rem;
-            margin: 0.25rem 0;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .intro {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .intro h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .places-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .input-group {
             margin-bottom: 2rem;
         }
 
-        article {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
         }
 
-        article:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        article h3 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .place-content {
-            padding: 1.5rem;
-        }
-
-        .place-images {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .place-images img {
+        .input-group input,
+        .input-group textarea {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.2rem 1.5rem;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            font-family: 'Prompt', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #fafafa;
         }
 
-        .place-content p {
-            margin-bottom: 1rem;
-            text-align: justify;
-            line-height: 1.8;
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(167, 59, 36, 0.1);
         }
 
-        .place-content ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
+        .input-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
-        .place-content li {
-            margin-bottom: 0.5rem;
+        .btn-submit {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Prompt', sans-serif;
+            box-shadow: 0 10px 30px rgba(167, 59, 36, 0.3);
         }
 
-        .highlight {
-            background: #fff3cd;
-            padding: 1rem;
-            border-left: 4px solid #ffc107;
-            border-radius: 4px;
-            margin-top: 1rem;
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(167, 59, 36, 0.4);
         }
 
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
         footer {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
+            background: var(--dark);
+            color: white;
             text-align: center;
-            margin-top: 2rem;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
         }
 
         footer p {
-            color: #666;
             margin: 0.5rem 0;
+            opacity: 0.9;
         }
 
-        /* Media Queries for Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
+        /* Responsive */
+        @media(max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            header p {
-                font-size: 1rem;
+            .section-header h2 {
+                font-size: 2.5rem;
             }
 
-            .places-grid {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .places-container {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
 
-            .place-images {
-                grid-template-columns: 1fr;
-            }
-
-            .intro {
-                padding: 1.5rem;
-            }
-
-            main {
-                margin: 1rem auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 1.5rem 0;
-            }
-
-            header h1 {
-                font-size: 1.5rem;
-            }
-
-            article h3 {
-                font-size: 1.3rem;
-                padding: 1rem;
-            }
-
-            .place-content {
-                padding: 1rem;
-            }
-
-            .student-info {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .places-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .form-wrapper {
+                padding: 2rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>🏛️ KKU Campus Guide</h1>
-        <p>คู่มือแนะนำสถานที่ท่องเที่ยวภายในมหาวิทยาลัยขอนแก่น</p>
-        <div class="student-info">
-            <p><strong>รหัสนักศึกษา:</strong> 663380145-7</p>
-            <p><strong>ชื่อ-สกุล:</strong> นางสาวกุลศยา จันภูงา</p>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <canvas id="navLogo" width="50" height="50"></canvas>
+                <span>KKU Guide</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">หน้าแรก</a></li>
+                <li><a href="#places">สถานที่</a></li>
+                <li><a href="#form">แนะนำ</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="intro">
-            <h2>🌟 เกี่ยวกับมหาวิทยาลัยขอนแก่น</h2>
-            <p>มหาวิทยาลัยขอนแก่นเป็นสถาบันการศึกษาชั้นนำของภาคตะวันออกเฉียงเหนือ ตั้งอยู่ในจังหวัดขอนแก่น มีพื้นที่กว้างขวางกว่า 5,500 ไร่ ภายในมหาวิทยาลัยมีสถานที่สำคัญและสวยงามมากมายที่น่าสนใจ ทั้งเพื่อการศึกษา พักผ่อนหย่อนใจ และท่องเที่ยว</p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="logo-wrapper">
+                <canvas id="logoCanvas" width="150" height="150"></canvas>
+            </div>
+            <h1>KKU Campus Guide</h1>
+            <p class="hero-subtitle">สำรวจทุกมุมมหาวิทยาลัยขอนแก่น</p>
+            <div class="student-badge">
+                <div>รหัสนักศึกษา: <span id="student-id">663380145-7</span></div>
+                <strong>นางสาวกุลศยา จันภูงา</strong>
+            </div>
+        </div>
+    </section>
 
-        <section class="places-grid">
-            <article>
-                <h3>🌳 บึงสีฐาน (Bueng Si Than)</h3>
-                <div class="place-content">
-                    <div class="place-images">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="บึงสีฐานยามเช้า">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="ทางเดินรอบบึงสีฐาน">
-                    </div>
-                    <p>บึงสีฐานเป็นแหล่งน้ำขนาดใหญ่ใจกลางมหาวิทยาลัยขอนแก่น มีพื้นที่ประมาณ 103 ไร่ เป็นสถานที่พักผ่อนหย่อนใจที่สำคัญของนักศึกษา คณาจารย์ และบุคลากร รวมถึงประชาชนทั่วไป</p>
-                    <p><strong>จุดเด่น:</strong></p>
-                    <ul>
-                        <li>ทางเดินวิ่งและปั่นจักรยานรอบบึงยาวกว่า 2 กิโลเมตร</li>
-                        <li>จุดชมพระอาทิตย์ขึ้นและตกดินที่สวยงาม</li>
-                        <li>พื้นที่สีเขียวและบรรยากาศร่มรื่น</li>
-                        <li>มีนกและสัตว์น้ำหลากหลายชนิด</li>
-                    </ul>
-                    <div class="highlight">
-                        <strong>💡 เคล็ดลับ:</strong> ช่วงเวลาที่สวยที่สุดคือช่วงเช้าตรู่ (05:00-07:00) และช่วงเย็น (17:00-18:30)
-                    </div>
+    <!-- Places Section -->
+    <section class="places-section" id="places">
+        <div class="section-header">
+            <h2>สถานที่น่าสนใจ</h2>
+            <p style="color: #666; font-size: 1.2rem; margin-top: 1rem;">สถานที่ภายในมหาวิทยาลัย</p>
+        </div>
+
+        <div class="places-container">
+            <article class="place-item">
+                <div class="place-header">
+                    <img src="https://sc.kku.ac.th/wp-content/uploads/2023/05/7R6A7143-scaled.jpg" alt="SC Building">
+                    <div class="place-badge">🏛️ อาคาร</div>
+                </div>
+                <div class="place-body">
+                    <h3>อาคารเรียนรวม 1 (SC)</h3>
+                    <p>อาคารเรียนรวมสำหรับนักศึกษาวิทย์ คอม และสายเทคนิคต่างๆ
+                        พร้อมพื้นที่นั่งทำงานและร้านค้าบริเวณโดยรอบแบบครบครัน</p>
                 </div>
             </article>
 
-            <article>
-                <h3>📚 ศูนย์หนังสือ ศูนย์บรรณสารฯ</h3>
-                <div class="place-content">
-                    <div class="place-images">
-                        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&q=80" alt="ห้องสมุดสมัยใหม่">
-                        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&q=80" alt="บรรยากาศภายในห้องสมุด">
-                    </div>
-                    <p>ศูนย์บรรณสารและสื่อการศึกษามหาวิทยาลัยขอนแก่นเป็นห้องสมุดที่ทันสมัย มีทรัพยากรสารสนเทศครบครัน เป็นแหล่งเรียนรู้ที่สำคัญของนักศึกษาและนักวิจัย</p>
-                    <p><strong>สิ่งอำนวยความสะดวก:</strong></p>
-                    <ul>
-                        <li>หนังสือและวารสารกว่า 500,000 รายการ</li>
-                        <li>ฐานข้อมูลออนไลน์และ e-Book</li>
-                        <li>ห้องศึกษาค้นคว้ากลุ่มและห้องเดี่ยว</li>
-                        <li>ระบบ Wi-Fi ความเร็วสูง</li>
-                        <li>Zone คาเฟ่และพื้นที่พักผ่อน</li>
-                    </ul>
-                    <div class="highlight">
-                        <strong>⏰ เวลาทำการ:</strong> จันทร์-ศุกร์ 08:00-20:00, เสาร์-อาทิตย์ 09:00-17:00
-                    </div>
+            <article class="place-item">
+                <div class="place-header">
+                    <img src="https://ddq1mzvkg4fn7.cloudfront.net/2023/09/----------6.jpg" alt="Beung Sithan">
+                    <div class="place-badge">🌳 ธรรมชาติ</div>
+                </div>
+                <div class="place-body">
+                    <h3>บึงสีฐาน</h3>
+                    <p>สถานที่พักผ่อนและออกกำลังกายยอดนิยมของนักศึกษา มีวิวสวยตลอดทั้งวัน เหมาะสำหรับผ่อนคลาย</p>
                 </div>
             </article>
 
-            <article>
-                <h3>🏛️ พิพิธภัณฑ์ธรรมชาติวิทยา</h3>
-                <div class="place-content">
-                    <div class="place-images">
-                        <img src="https://images.unsplash.com/photo-1566127444979-b3d2b11b6e2d?w=800&q=80" alt="พิพิธภัณฑ์ธรรมชาติ">
-                        <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800&q=80" alt="นิทรรศการภายในพิพิธภัณฑ์">
-                    </div>
-                    <p>พิพิธภัณฑ์ธรรมชาติวิทยามหาวิทยาลัยขอนแก่นเป็นแหล่งเรียนรู้ทางวิทยาศาสตร์ที่สำคัญของภาคอีสาน จัดแสดงตัวอย่างสิ่งมีชีวิตและซากดึกดำบรรพ์มากมาย</p>
-                    <p><strong>ไฮไลท์ของพิพิธภัณฑ์:</strong></p>
-                    <ul>
-                        <li>ซากไดโนเสาร์ที่สมบูรณ์ที่สุดในประเทศไทย</li>
-                        <li>ตัวอย่างสัตว์สะสมกว่า 20,000 ชิ้น</li>
-                        <li>นิทรรศการทางธรณีวิทยาและซากฟอสซิล</li>
-                        <li>ห้องจัดแสดงสัตว์ป่าและพืชพรรณภาคอีสาน</li>
-                    </ul>
-                    <div class="highlight">
-                        <strong>🎫 ค่าเข้าชม:</strong> บุคคลทั่วไป 20 บาท, นักศึกษา/เด็ก 10 บาท (เปิด อังคาร-อาทิตย์)
-                    </div>
+            <article class="place-item">
+                <div class="place-header">
+                    <img src="https://asset.kku.ac.th/wp-content/uploads/2022/04/%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3-1-%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B9%8C-%E0%B8%99.%E0%B8%AA.%E0%B8%88%E0%B8%B8%E0%B8%91%E0%B8%B2%E0%B8%A3%E0%B8%B1%E0%B8%95%E0%B8%99%E0%B9%8C-%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%81%E0%B8%B8%E0%B8%A5-5-1024x768.jpg"
+                        alt="Complex">
+                    <div class="place-badge">🍜 อาหาร</div>
+                </div>
+                <div class="place-body">
+                    <h3>ศูนย์อาหารคอมเพล็กซ์</h3>
+                    <p>ศูนย์อาหารและศูนย์รวมบริการนักศึกษา ราคาประหยัด อาหารหลากหลาย มีทั้งอาหารไทยและนานาชาติ</p>
                 </div>
             </article>
 
-            <article>
-                <h3>🎨 KKU Art & Culture Center</h3>
-                <div class="place-content">
-                    <div class="place-images">
-                        <img src="https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=800&q=80" alt="ศูนย์ศิลปวัฒนธรรม">
-                        <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=800&q=80" alt="นิทรรศการศิลปะ">
-                    </div>
-                    <p>ศูนย์ศิลปวัฒนธรรมมหาวิทยาลัยขอนแก่นเป็นพื้นที่จัดแสดงนิทรรศการศิลปะ วัฒนธรรม และกิจกรรมทางวิชาการต่างๆ เป็นจุดรวมของศิลปินและผู้สนใจศิลปะในภาคอีสาน</p>
-                    <p><strong>กิจกรรมและบริการ:</strong></p>
-                    <ul>
-                        <li>นิทรรศการศิลปะร่วมสมัยหมุนเวียน</li>
-                        <li>การแสดงดนตรีและการละคร</li>
-                        <li>เวิร์คช็อปศิลปะและหัตถกรรม</li>
-                        <li>ห้องจัดแสดงวัฒนธรรมท้องถิ่นอีสาน</li>
-                        <li>คาเฟ่และร้านหนังสือศิลปะ</li>
-                    </ul>
-                    <div class="highlight">
-                        <strong>📅 กิจกรรมพิเศษ:</strong> ตรวจสอบปฏิทินกิจกรรมประจำเดือนที่เคาน์เตอร์หรือเว็บไซต์
-                    </div>
+            <article class="place-item">
+                <div class="place-header">
+                    <img src="https://i.ytimg.com/vi/Wo6YuqTjiYA/maxresdefault.jpg" alt="Modin Shrine">
+                    <div class="place-badge">🙏 ศาสนา</div>
+                </div>
+                <div class="place-body">
+                    <h3>ศาลเจ้าพ่อมอดินแดง</h3>
+                    <p>จุดศักดิ์สิทธิ์คู่บารมี มข. นักศึกษามากราบไหว้ขอพรเพื่อความเป็นสิริมงคลและความสำเร็จในการเรียน
+                    </p>
                 </div>
             </article>
-        </section>
+        </div>
+    </section>
 
-        <section class="intro">
-            <h2>🗺️ วิธีการเดินทาง</h2>
-            <p>มหาวิทยาลัยขอนแก่นตั้งอยู่ห่างจากตัวเมืองขอนแก่นประมาณ 5 กิโลเมตร สามารถเดินทางได้โดยรถสองแถว รถแท็กซี่ หรือรถส่วนตัว ภายในมหาวิทยาลัยมีรถรับส่งนักศึกษาให้บริการฟรีหลายสาย</p>
-        </section>
-    </main>
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h2>แนะนำสถานที่</h2>
+                <p>มีสถานที่ดีๆ ที่อยากแนะนำใช่ไหม? บอกเราสิ!</p>
+            </div>
 
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="61ef6ef8-bb19-4986-aecc-31123aabd93b">
+
+                <div class="input-group">
+                    <label>📍 ชื่อสถานที่</label>
+                    <input type="text" name="place_name" required />
+                </div>
+
+                <div class="input-group">
+                    <label>📝 รายละเอียดสถานที่</label>
+                    <textarea name="place_description" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>📸 ลิงก์รูปภาพ (ถ้ามี)</label>
+                    <input type="url" name="place_image" placeholder="https://example.com/image.jpg" />
+                </div>
+
+                <button class="btn-submit" type="submit">ส่งข้อมูล</button>
+
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
     <footer>
-        <p><strong>© 2024 KKU Campus Guide</strong></p>
-        <p>มหาวิทยาลัยขอนแก่น จังหวัดขอนแก่น 40002</p>
-        <p>โทร: 043-009-700 | เว็บไซต์: www.kku.ac.th</p>
+        <p style="font-size: 1.2rem; font-weight: 600;">🎓 KKU Campus Guide</p>
+        <p>นางสาวกุลศยา จันภูงา | รหัสนักศึกษา 663380145-7</p>
+        <p style="opacity: 0.7; margin-top: 1rem;">HTML5 • CSS3 • Canvas Animation</p>
     </footer>
+
+    <script>
+        // Main Logo Animation
+        const canvas = document.getElementById("logoCanvas");
+        const ctx = canvas.getContext("2d");
+        let frame = 0;
+
+        function animateLogo() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Outer rotating circle
+            ctx.save();
+            ctx.translate(75, 75);
+            ctx.rotate(frame * 0.02);
+
+            for (let i = 0; i < 8; i++) {
+                ctx.save();
+                ctx.rotate((Math.PI * 2 / 8) * i);
+                ctx.beginPath();
+                ctx.arc(40, 0, 8, 0, Math.PI * 2);
+                ctx.fillStyle = "#E8967D";
+                ctx.fill();
+                ctx.restore();
+            }
+            ctx.restore();
+
+            // Main circle with gradient
+            const gradient = ctx.createRadialGradient(75, 75, 0, 75, 75, 50);
+            gradient.addColorStop(0, "#A73B24");
+            gradient.addColorStop(1, "#7A2B1A");
+
+            ctx.beginPath();
+            ctx.arc(75, 75, 45 + Math.sin(frame * 0.05) * 3, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Inner pulsing circle
+            ctx.beginPath();
+            ctx.arc(75, 75, 35 + Math.sin(frame * 0.08) * 2, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(244, 196, 48, 0.3)";
+            ctx.fill();
+
+            // Text
+            ctx.fillStyle = "white";
+            ctx.font = "bold 36px 'Prompt', sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.shadowColor = "rgba(0,0,0,0.3)";
+            ctx.shadowBlur = 8;
+            ctx.fillText("KKU", 75, 75);
+            ctx.shadowBlur = 0;
+
+            frame++;
+            requestAnimationFrame(animateLogo);
+        }
+
+        // Nav Logo Animation
+        const navCanvas = document.getElementById("navLogo");
+        const navCtx = navCanvas.getContext("2d");
+
+        function animateNavLogo() {
+            navCtx.clearRect(0, 0, navCanvas.width, navCanvas.height);
+
+            const gradient = navCtx.createRadialGradient(25, 25, 0, 25, 25, 20);
+            gradient.addColorStop(0, "#E8967D");
+            gradient.addColorStop(1, "#A73B24");
+
+            navCtx.beginPath();
+            navCtx.arc(25, 25, 18, 0, Math.PI * 2);
+            navCtx.fillStyle = gradient;
+            navCtx.fill();
+
+            navCtx.fillStyle = "white";
+            navCtx.font = "bold 14px 'Prompt'";
+            navCtx.textAlign = "center";
+            navCtx.textBaseline = "middle";
+            navCtx.fillText("KKU", 25, 25);
+
+            requestAnimationFrame(animateNavLogo);
+        }
+
+        animateLogo();
+        animateNavLogo();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>
