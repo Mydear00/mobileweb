@@ -6,12 +6,267 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ผลงาน-นางสาวกุลศยา จันภูงา</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 30px 30px;
+            padding: 2.5rem 1rem !important;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            animation: fadeIn 1s ease;
+        }
+
+        header strong {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        h4 {
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            height: 100%;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-body {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .card-body h5 {
+            color: #667eea !important;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .card-body h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .card-body p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 30px 30px 0 0;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            color: #555;
+            margin: 0;
+            font-size: 1rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .week-date {
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .col-md-6:nth-child(1) .card {
+            animation-delay: 0.1s;
+        }
+
+        .col-md-6:nth-child(2) .card {
+            animation-delay: 0.2s;
+        }
+
+        .col-md-6:nth-child(3) .card {
+            animation-delay: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            header h3 {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.5rem;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            .btn-primary {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header class="text-center py-4">
-        <h3>รายวิชาMobile Web Application Development</h3>
-        <p>ภาคการศึกษา {{2/2568}}</p>
+        <h3>📱 รายวิชา Mobile Web Application Development</h3>
+        <p>ภาคการศึกษา 2/2568</p>
         <p>
             <strong>ชื่อ-สกุล:</strong>
             นางสาวกุลศยา จันภูงา
@@ -21,15 +276,16 @@
             663380145-7
         </p>
     </header>
+
     <main class="container mt-4">
-        <h4 class="mb-4 text-primary">สรุปผลงานการฝึกปฏิบัติรายสัปดาห์</h4>
+        <h4 class="mb-4">✨ สรุปผลงานการฝึกปฏิบัติรายสัปดาห์</h4>
         <div class="row g-4">
             <!-- Week 1 -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="week-title text-primary">
-                            Week 1: การเตรียม Workspace
+                        <h5 class="week-title">
+                            🚀 Week 1: การเตรียม Workspace
                         </h5>
                         <p>
                             ติดตั้งเครื่องมือที่จำเป็นสำหรับฝึกปฏิบัติการในรายวิชาการทดลองสร้าง Ionic-Vue และ
@@ -37,42 +293,40 @@
                         </p>
                         <a href="lab01_vue/index.html" class="btn btn-primary mb-2" target="_blank">Lab01_Vue</a>
                         <a href="lab01_react/index.html" class="btn btn-primary mb-2" target="_blank">Lab01_React</a>
-
-
-                        <br />
-                        วันทีส่งผลงาน: 24/11/2568
+                        <span class="week-date">📅 วันที่ส่งผลงาน: 24/11/2568</span>
                     </div>
                 </div>
             </div>
+
             <!-- Week 2 -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="text-primary">Week 2: HTML5 & CSS3</h5>
-                        <p>การสร้างโครงร่างและออกแบบหน้าเว็บด้วย HTML5 และ CSS3</p>
+                        <h5>🎨 Week 2: HTML5 & CSS3</h5>
+                        <p>การสร้างโครงร่างและออกแบบหน้าเว็บด้วย HTML5 และ CSS3 พร้อมเทคนิคการจัดวางและสไตล์ที่ทันสมัย</p>
                         <a href="lab02_guide/index.html" class="btn btn-primary mb-2" target="_blank">ดูผลงาน</a>
+                        <span class="week-date">📅 วันที่ส่งผลงาน: -</span>
                     </div>
                 </div>
             </div>
+
             <!-- Week 3 -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="text-primary">
-                            Week 3: JavaScript & TypeScript
-                        </h5>
-                        <p>การเขียน JavaScript และ TypeScript</p
+                        <h5>💻 Week 3: JavaScript & TypeScript</h5>
+                        <p>การเขียน JavaScript และ TypeScript เพื่อเพิ่มความสามารถในการโต้ตอบและจัดการข้อมูลในเว็บแอปพลิเคชัน</p>
                         <a href="lab03_typescript/index.html" class="btn btn-primary mb-2" target="_blank">ดูผลงาน</a>
+                        <span class="week-date">📅 วันที่ส่งผลงาน: -</span>
                     </div>
                 </div>
             </div>
-            <!-- เพิมสัปดาห์อื่นๆได้-->
         </div>
     </main>
+
     <footer class="text-center mt-5 mb-3">
         <p>
-            © 2025 Mobile Web Application Development — College of Computing, Khon
-            Kaen University
+            © 2025 Mobile Web Application Development — College of Computing, Khon Kaen University
         </p>
     </footer>
 
